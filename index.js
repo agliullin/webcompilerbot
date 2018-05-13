@@ -846,7 +846,7 @@ if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
 
 function Convert2Bin(outstring, statstring, signBit, power, rounding)
 {
-    output = new String()                 //Output
+    var output = new String()                 //Output
 
     var binexpnt, index1, index2, cnst, bias, lastbit, rounded, index3, binexpnt2
     var moreBits
@@ -1177,12 +1177,12 @@ function Dec2Bin(input)
 
 function Canonical(input)
 {
-    output = new String()
-    numerals = new String()
-    expstr = new String()
-    signstr = new String()
-    expsignstr = new String()
-    expstrtmp = new String()
+    var output = new String()
+    var numerals = new String()
+    var expstr = new String()
+    var signstr = new String()
+    var expsignstr = new String()
+    var expstrtmp = new String()
 
     var locE, stop, expnum, locDPact, locDP, start, MSDfound, index, expdelta
     var expstart, expprecision
@@ -1313,8 +1313,8 @@ function Canonical(input)
 
 function MostSigOrder(input)
 {
-    output = new String()
-    expstr = new String()
+    var output = new String()
+    var expstr = new String()
 
     var expprecision, expbias, stop, expnum, index
 
@@ -1346,7 +1346,7 @@ function MostSigOrder(input)
 
 function A_gt_B(A, B)
 {
-    numerals = new String()
+    var numerals = new String()
 
     var greater, stop, index, Adigit, Bdigit
 
@@ -1388,7 +1388,7 @@ function A_gt_B(A, B)
 
 function OvfCheck(input)
 {
-    output = new String()
+    var output = new String()
 
     //Is value magnitude greater than +1.7976931348623157E+00308
     if (A_gt_B(MostSigOrder(input), "5030817976931348623157"))
@@ -1405,7 +1405,7 @@ function OvfCheck(input)
 
 function UndfCheck(input)
 {
-    output = new String()
+    var output = new String()
 
     //Is value magnitude less than +2.4703282292062328E-00324
     if (A_gt_B("4967624703282292062328", MostSigOrder(input)))
@@ -1418,7 +1418,7 @@ function UndfCheck(input)
 
 function RemoveBlanks(input)
 {
-    output = new String()
+    var output = new String()
 
     var start, stop
 
@@ -1437,8 +1437,8 @@ function RemoveBlanks(input)
 
 function Convert2Hex()
 {
-    output = new String()
-    numerals = new String()
+    var output = new String()
+    var numerals = new String()
 
     var temp, index, i
 
@@ -1461,11 +1461,11 @@ function Convert2Hex()
 
 function numStrClipOff(input, precision)
 {
-    result = new String()
-    numerals = new String()
-    tempstr = new String()
-    expstr = new String()
-    signstr = new String()
+    var result = new String()
+    var numerals = new String()
+    var tempstr = new String()
+    var expstr = new String()
+    var signstr = new String()
 
     var locE, stop, expnum, locDP, start, MSD, MSDfound, index, expdelta, digits
     var number
@@ -1589,8 +1589,8 @@ function numStrClipOff(input, precision)
 
 function numCutOff(input, precision)
 {
-    result = new String()
-    tempstr = new String()
+    var result = new String()
+    var tempstr = new String()
 
     var temp = input;
     if(temp < 1)
@@ -1612,7 +1612,7 @@ function numCutOff(input, precision)
 
 function Convert2Dec()
 {
-    output = new String()
+    var output = new String()
 
     var s, i, dp, val, hid, temp, decValue, power
 
@@ -1703,8 +1703,8 @@ function compute(obj, rounding){
       0 ~ 32/64 from left to right instead of right to left, the
       way the output is presented
     */
-    ieee32 = new ieee(32)
-    ieee64 = new ieee(64)
+    var ieee32 = new ieee(32)
+    var ieee64 = new ieee(64)
 
     var input, index1, cnst
 
@@ -1787,7 +1787,7 @@ function compute(obj, rounding){
 // Additions for pascal.js
 
 function llvm_double_hex(input) {
-    ieee64 = new ieee(64)
+    var ieee64 = new ieee(64)
     ieee64.Dec2Bin(input.toString())
     ieee64.BinString =
         ieee64.Convert2Bin(ieee64.DispStr, ieee64.StatCond64, ieee64.Result[0],
@@ -3302,6 +3302,9 @@ function doExecute(src) {
 
 
 
+
+
+XHR_PREFIX = "llvm.js/";
 try {
     // On SpiderMonkey, prepare a large amount of GC space
     gcparam('maxBytes', 1024*1024*1024);
