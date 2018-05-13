@@ -12,11 +12,11 @@ const bot = new TelegramBot(TOKEN, {polling: true})
 
 bot.on('message', msg => {
     GetText = msg.text;
-    ParseText = doParse(GetText, 'the_ast');
-    IRText = doIR(ParseText, 'the_ir');
-    OptimizeText = doOptimize(IRText, 'the_ir2');
-    CompileText = doCompile(OptimizeText, 'the_js');
-    ExecuteText = doExecute(CompileText, 'the_output');
+    ParseText = doParse(GetText);
+    IRText = doIR(ParseText);
+    OptimizeText = doOptimize(IRText);
+    CompileText = doCompile(OptimizeText);
+    ExecuteText = doExecute(CompileText);
     bot.sendMessage(msg.chat.id, ExecuteText);
 })
 
