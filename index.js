@@ -14,7 +14,7 @@ const fs = require('fs');
 
 const xray = new Xray();
 
-var url = 'https://ru.wikipedia.org/wiki/';
+var url = 'https://en.wikipedia.org/wiki/';
 
 
 bot.on('message', msg => {
