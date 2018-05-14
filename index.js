@@ -8,23 +8,55 @@ const Xray = require('x-ray');
 
 const request = require('request');
 
+const cheerio = require('cheerio');
+
 const fs = require('fs');
 
 const xray = new Xray();
 
 var url = 'https://ru.wikipedia.org/wiki/';
 
+
 bot.on('message', msg => {
 
-    xray(url + msg.text, 'h1', [{
-        title: ''
+
+    request(url + msg.text, function(err, res, body){
+        if (err) {
+            console.log(err);
+        } else{
+            $ = cheerio.load(body);
+            var results = [];
+            $('table.infobox tr').each(function(){
+                result.push({
+                    title:$('th',this).text(),
+                    value:$('td',this).text()
+                });
+            });
+
+            results.forEach(function(result, index) {
+                bot.sendMessage(msg.chat.id, result.title + ": " + result.value);
+            });
+
+        }
+    });
+
+    //.write('results.json');
+});
+
+
+/*
+bot.on('message', msg => {
+    xray('https://tproger.ru/translations/web-scraping-node-js/', 'div', [{
+        title: 'h2',
+        content: 'p'
     }])(function(err, results) {
         results.forEach(function(result, index) {
             bot.sendMessage(msg.chat.id, result.title);
         });
     });
+    //.write('results.json');
 });
-
+*/
 
 
 
