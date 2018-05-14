@@ -16,12 +16,11 @@ var url = 'https://ru.wikipedia.org/wiki/';
 
 bot.on('message', msg => {
 
-    xray(url + msg.text, '.infobox.vcard', [{
-        title: 'td',
-        content: 'td a'
+    xray(url + msg.text, 'h1', [{
+        title: ''
     }])(function(err, results) {
         results.forEach(function(result, index) {
-            bot.sendMessage(msg.chat.id, result.title + ':' + result.content);
+            bot.sendMessage(msg.chat.id, result.title);
         });
     });
 });
