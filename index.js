@@ -19,7 +19,11 @@ bot.on('message', msg => {
     xray(url + msg.text, '.infobox.vcard', [{
         title: 'td',
         content: 'td a'
-    }]).write('results.json');
+    }])(function(err, results) {
+        results.forEach(function(result, index) {
+            bot.sendMessage(msg.chat.id, result.title + ':' + result.content);
+        });
+    });
 });
 
 
