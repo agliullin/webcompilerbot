@@ -26,7 +26,7 @@ bot.on('message', msg => {
         } else{
             $ = cheerio.load(body);
             var results = [];
-            $('.mw-content-text p').each(function(){
+            $('#mw-content-text p').each(function(){
                 results.push({
                     value:$(this).text()
                 });
