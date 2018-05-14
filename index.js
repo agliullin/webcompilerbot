@@ -27,7 +27,7 @@ bot.on('message', msg => {
             $ = cheerio.load(body);
             var results = [];
             $('table.infobox tr').each(function(){
-                result.push({
+                results.push({
                     title:$('th',this).text(),
                     value:$('td',this).text()
                 });
