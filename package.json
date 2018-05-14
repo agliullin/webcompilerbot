@@ -1,7 +1,6 @@
 {
   "name": "webcompilerbot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -12,6 +11,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-telegram-bot-api": "^0.30.0"
-  }
+    "node-telegram-bot-api": "^0.30.0",
+    "request": "^2.85.0",
+    "x-ray": "^2.3.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agliullin/webcompilerbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/agliullin/webcompilerbot/issues"
+  },
+  "homepage": "https://github.com/agliullin/webcompilerbot#readme",
+  "description": ""
 }
