@@ -25,11 +25,15 @@ bot.on('message', msg => {
             console.log(err);
         } else{
             $ = cheerio.load(body);
+            var index = 1;
             var results = [];
             $('#mw-content-text p').each(function(){
-                results.push({
-                    value:$(this).text()
-                });
+                if (index < 3) {
+                    results.push({
+                        value: $(this).text()
+                    });
+                }
+                index++;
             });
 
             results.forEach(function(result, index) {
