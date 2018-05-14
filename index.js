@@ -26,15 +26,14 @@ bot.on('message', msg => {
         } else{
             $ = cheerio.load(body);
             var results = [];
-            $('table.infobox tr').each(function(){
+            $('.mw-content-text p').each(function(){
                 results.push({
-                    title:$('th',this).text(),
-                    value:$('td',this).text()
+                    value:$(this).text()
                 });
             });
 
             results.forEach(function(result, index) {
-                bot.sendMessage(msg.chat.id, result.title + ": " + result.value);
+                bot.sendMessage(msg.chat.id, result.value);
             });
 
         }
